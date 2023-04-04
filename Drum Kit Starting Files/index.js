@@ -39,10 +39,20 @@ function detectAction(passedKey){
                 kick.play();
                 break;
     
-            default: console.log(buttonInnerHTML)
+            default: console.log(buttonInnerHTML);
     }
 
 
+}
+
+
+function buttonAnimation(currentKey){
+
+    var activeButton = document.querySelector("." + currentKey);
+    activeButton.classList.add("pressed");
+    setTimeout(function() {activeButton.classList.remove("pressed");}
+    , 200 );
+    
 }
 
 
@@ -56,14 +66,16 @@ function handleClick(){
     // alert("I got clicked!");
     
     
-    var buttonInnerHTML = this.innerHTML
+    var buttonInnerHTML = this.innerHTML;
     
-    detectAction(buttonInnerHTML)
+    detectAction(buttonInnerHTML);
+    buttonAnimation(buttonInnerHTML);
     
 }
 
 document.addEventListener("keydown", function(event){
     console.log(event);
     console.log(event.key);
-    detectAction(event.key)
+    detectAction(event.key);
+    buttonAnimation(event.key);
 });
